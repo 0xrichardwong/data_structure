@@ -41,6 +41,25 @@ class SinglyLinkedList{
         iterator.next = new SinglyLinkedListNode(data);
     }
 
+    midNode(){
+        // calculation of midpoint
+        let iterator = this.head;
+        let count = 0;
+        while(iterator !== null){
+            count += 1;
+            iterator = iterator.next;
+        }
+        let midPoint = Math.floor(count/2);
+
+        // finding midNode
+        iterator = this.head;
+        count = 0;
+        for(let i=0; i<midPoint; i++){
+            iterator = iterator.next;
+        }
+        return iterator;
+    }
+
     printList(){
         let iterator = this.head;
         let output = "";
@@ -52,32 +71,3 @@ class SinglyLinkedList{
         return output;
     }
 }
-
-function insertHeadTail(head,data){
-    let list = new SinglyLinkedList(head);
-    list.preAppend(data);
-    list.append(data);
-    return list.printList();
-}
-
-console.log(insertHeadTail([1,2,3,4,5],150));
-
-/*
-function insertAtHead(head,data){
-    let list = new SinglyLinkedList(head);
-    list.preAppend(data);
-    return list.printList();
-}
-console.log(insertAtHead([1,2,3],5))
-*/
-
-/*
-function insertAtTail(tail,data){
-    let list = new SinglyLinkedList(tail);
-    list.append(data);
-    return list.printList();
-}
-console.log(insertAtTail([3,3,2,10,34,45,67,356],367));
-*/
-
-
