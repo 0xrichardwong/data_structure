@@ -10,40 +10,28 @@ class DoublyLinkedList{
     constructor(arr){
         if(arr.length <= 0){
             this.head = new Node(null);
-            this.tail = this.head;
+            this.tail = new Node(null);
             return;
         }
 
-        this.head = new Node(arr[0]);
-        let currentNode = this.head;
-        for(let i=1; i<arr.length;i++){
-            currentNode.next = new Node(arr[i]);
-            currentNode.next.prev = currentNode;
-            currentNode = currentNode.next;
+    this.head = new Node(arr[0]);
+    let currentNode = this.head;
+    
+    for (let i = 1; i < arr.length; i++) {
+            let newNode = new Node(arr[i]);  // 修正: 新しいノードを作成
+            currentNode.next = newNode;  // 修正: currentNodeのnextにnewNodeを設定
+            newNode.prev = currentNode;  // 修正: newNodeのprevにcurrentNodeを設定
+            currentNode = newNode;  // 修正: currentNodeを更新
         }
 
-        this.tail = currentNode;
-
-    }
-
-    printList(){
-        let iterator = this.head;
-        let output = "";
-        while(iterator !== null){
-            output += iterator.data + " ";
-            iterator = iterator.next;
-        }
-        console.log(output);
+        this.tail = currentNode;  // 修正: ループの後にtailを設定
     }
 }
 
-
-let numList = new DoublyLinkedList([35,23,546,67,86,234,56,767,34,1,98,78,555]);
-
-numList.printList();
-
-console.log(numList.head.data);
-console.log(numList.head.next.data);
-
-console.log(numList.tail.data);
-console.log(numList.tail.prev.data);
+let list = new DoublyLinkedList([1,2,3,4,5,6,7]);
+console.log(list.head.data);
+console.log(list.head.next.data);
+console.log(list.head.next.prev.data);
+console.log(list.tail.data);
+console.log(list.tail.prev.data);
+console.log(list.tail.prev.prev.data);
