@@ -119,23 +119,3 @@ class DoublyLinkedList{
 }
 
 let numList = new DoublyLinkedList([35,23,546,67,86,234,56,767,34,1,98,78,555]);
-
-// pop
-numList.printList();
-
-numList.popFront();
-numList.pop();
-
-numList.printList();
-numList.printInReverse();
-
-// 要素を削除します
-console.log("Deleting in O(1)");
-numList.printList();
-
-numList.deleteNode(numList.at(3));
-numList.deleteNode(numList.at(9));
-numList.deleteNode(numList.at(0));
-
-numList.printList();
-numList.printInReverse();
