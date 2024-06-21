@@ -1,49 +1,48 @@
 class Node{
     constructor(data){
-      this.data = data;
-      this.next = null;
+        this.data = data;
+        this.next = null;
     }
-  }
-  
-  class Stack{
+}
+
+class Stack{
     constructor(){
-      this.head = null;
+        this.head = null;
     }
-  
+
     push(data){
-      const temp = this.head;
-      this.head = new Node(data);
-      this.head.next = temp;
+        let temp = this.head;
+        this.head = new Node(data);
+        this.head.next = temp;
     }
-  
+
     pop(){
-      if(this.head === null) return null;
-      const temp = this.head;
-      this.head = this.head.next;
-      return temp.data;
+        if(this.head == null) return null;
+        let temp = this.head;
+        this.head = this.head.next;
+        return temp.data;
     }
-  
+
     peek(){
-      if(this.head ===null) return null;
-      return this.head.data;
+        if(this.head === null) return null;
+        return this.head.data;
     }
-  }
-  
-  function reverse(arr){
-    let s = new Stack();
-    for(let i=0; i<arr.length;i++){
-      s.push(arr[i]);
+}
+
+function consecutiveWalk(arr) {
+    let stack = [];
+    stack.push(arr[0]);
+    for (let i = 1; i < arr.length; i++) {
+        if (stack[stack.length - 1] < arr[i]) {
+            while (stack.length > 0) {
+                stack.pop();
+            }
+        }
+        stack.push(arr[i]);
     }
-  
-    let output = [];
-    let count = arr.length;
-    while(count > 0){
-      output.push(s.pop());
-      count--;
-    }
-  
-    return output;
-  }
-  
-  console.log(reverse([1,2,3]));
-  
+    return stack;
+}
+
+console.log(consecutiveWalk([3,4,20,45,56,6,4,3,5,3,2])); // [5,3,2]
+console.log(consecutiveWalk([4,5,4,2,4,3646,34,64,3,0,-34,-54])); // [64,3,0,-34,-54]
+console.log(consecutiveWalk([4,5,4,2,4,3646,34,64,3,0,-34,-54,4])); // [4]
