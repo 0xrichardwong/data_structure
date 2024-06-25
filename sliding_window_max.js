@@ -1,4 +1,3 @@
-
 function getMaxWindows(arr, k) {
     
     // deque stores index number
@@ -56,9 +55,9 @@ function getMaxWindows(arr, k) {
         console.log(`Current Output: ${output}`);
     }
 
-
     return output;
 }
 
 // console.log(getMaxWindows([8,7,6,9], 2)); // [8,7,9]
-console.log(getMaxWindows([1,9,5,3,2,4,7], 4)); // [9,9,5,7]
+// console.log(getMaxWindows([1,9,5,3,2,4,7], 4)); // [9,9,5,7]
+// console.log(getMaxWindows([34,35,64,34,10,2,14,5,353,23,35,63,23], 4)); //[64, 64, 64, 34, 14, 353, 353, 353, 353, 63]
