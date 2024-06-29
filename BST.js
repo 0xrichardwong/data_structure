@@ -47,11 +47,41 @@ class BinarySearchTree{
         }
         return null;
     }
+
+    minimumNode(){
+        let iterator = this.root;
+        if(iterator === null) return null;
+        while(iterator.left !== null){
+            iterator = iterator.left;
+            output = iterator;
+        }
+        return iterator;
+    }
+
+    maximumNode(){
+        let iterator = this.root;
+        if(iterator === null) return null;
+        while(iterator.right !== null){
+            iterator = iterator.right;
+        }
+        return iterator;
+    }
+
+
 }
 
-let balancedBST = new BinarySearchTree([1,2,3,4,5,6,7,8,9,10,11]);
-console.log(balancedBST.keyExist(6));
-console.log(balancedBST.search(6));
-console.log(balancedBST.keyExist(2));
-console.log(balancedBST.search(2));
-console.log(balancedBST.search(34));
+
+arr1 = [0,-10,5,null,-3,null,9]; // 5 -> 9
+arr2 = [5,3,6,2,4,null,7]; // 5 -> 6
+arr3 = [-2,-17,8,-18,-11,3,19,null,null,null,-4,null,null,null,25]; // 8-> 19
+
+let balancedBST = new BinarySearchTree(arr1);
+
+console.log(`keyExist: ${balancedBST.keyExist(9)}`);
+console.log(`search: ${balancedBST.search(6)}`);
+
+console.log(`minimumNode:`);
+console.log(balancedBST.minimumNode());
+
+console.log(`maximumNode:`);
+console.log(balancedBST.maximumNode());
